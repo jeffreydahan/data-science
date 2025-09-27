@@ -98,9 +98,11 @@ def main():
     if not compute_project_id:
         raise ValueError("BQ_COMPUTE_PROJECT_ID environment variable not set.")
 
-    dataset_name = "forecasting_sticker_sales"
-    train_csv_filepath = "data_science/utils/data/train.csv"
-    test_csv_filepath = "data_science/utils/data/test.csv"
+    # create dataset_name variable from env variable BQ_DATASET_ID
+    dataset_name=os.getenv("BQ_DATASET_ID")
+    # dataset_name = "forecasting_sticker_sales"
+    train_csv_filepath = "data-science/utils/data/train.csv"
+    test_csv_filepath = "data-science/utils/data/test.csv"
 
     # Create the dataset if it doesn't exist
     print("Creating dataset.")

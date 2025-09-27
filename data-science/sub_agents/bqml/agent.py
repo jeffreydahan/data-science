@@ -22,17 +22,17 @@ from google.adk.tools.bigquery.config import BigQueryToolConfig, WriteMode
 from google.adk.agents.callback_context import CallbackContext
 
 
-from data_science.sub_agents.bqml.tools import (
+from .tools import (  # noqa: E402
     check_bq_models,
     rag_response,
 )
-from .prompts import return_instructions_bqml
+from .prompts import return_instructions_bqml  # noqa: E402
 
-
-from data_science.sub_agents.bigquery.agent import database_agent as bq_db_agent
-from data_science.sub_agents.bigquery.tools import (
+from ..bigquery.agent import database_agent as bq_db_agent  # noqa: E402
+from ..bigquery.tools import (  # noqa: E402
     get_database_settings as get_bq_database_settings,
 )
+from ...tools import call_ds_agent
 
 
 # BigQuery built-in tools in ADK
@@ -105,4 +105,7 @@ root_agent = Agent(
     instruction=return_instructions_bqml(),
     before_agent_callback=setup_before_agent_call,
     tools=[bq_execute_sql, check_bq_models, call_db_agent, rag_response],
+    tools=[
+        bq_execute_sql, check_bq_models, call_db_agent, rag_response, call_ds_agent
+    ],
 )

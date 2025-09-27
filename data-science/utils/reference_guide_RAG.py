@@ -29,7 +29,8 @@ load_dotenv(dotenv_path=env_file_path)
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
 corpus_name = os.getenv("BQML_RAG_CORPUS_NAME")
 
-display_name = "bqml_referenceguide_corpus"
+display_name = os.getenv("BQML_RAG_DISPLAY_NAME")
+# display_name = "bqml_referenceguide_corpus"
 
 paths = [
     "gs://cloud-samples-data/adk-samples/data-science/bqml"

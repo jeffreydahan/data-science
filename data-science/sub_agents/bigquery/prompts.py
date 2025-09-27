@@ -19,7 +19,7 @@ These instructions guide the agent's behavior, workflow, and tool usage.
 """
 
 import os
-from data_science.utils.utils import get_env_var
+from ...utils.utils import get_env_var
 
 
 def return_instructions_bigquery() -> str:
